@@ -23,14 +23,8 @@ while hasNext:
         scrapper.goToGame(games[i])
 
         game = scrapper.getGame()
-
-        print('Body -> ' + game.toJson())
-
-        #response = Request.sendRequest(Request.POST, baseUrlRequest, game.toJson())
+        
         response = game.sendToBDD(baseUrlRequest)
-
-        if response.status_code != 204:
-            print('response -> ' + str(json.loads(response.text)))
         
         scrapper.goBack()
         
